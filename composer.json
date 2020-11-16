@@ -1,0 +1,19 @@
+{
+    "name": "nduflot/php-avance-2020-11-16",
+    "description": "Projet pour formation php avance POE Lille 2020-11",
+    "type": "project",
+    "license": "common",
+    "authors": [
+        {
+            "name": "Duflot Nicolas",
+            "email": "nduflot@dawan.fr"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "doctrine/collections": "^1.6"
+    },
+    "autoload": {
+        "psr-4":{"App\\": "src/Classes"}
+    }
+}

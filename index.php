@@ -14,6 +14,9 @@ use App\Arme;
     <head>
         <meta charset="utf-8" />
         <title>Php Avancé</title>
+        <?php
+        include "./src/includes/headCalls.php";
+        ?>
     </head>
     <body>
         <header>

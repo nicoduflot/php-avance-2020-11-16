@@ -7,6 +7,9 @@ use App\Test;
 <head>
     <meta charset="utf-8" />
     <title>Php Avancé</title>
+    <?php
+    include "./src/includes/headCalls.php";
+    ?>
 </head>
 <body>
 <header>
@@ -173,6 +176,30 @@ use App\Test;
                 $test = new Test();
                 $test->echoBonjour();
                 ?>
+            </p>
+            <h2>Installation de Bootstrap</h2>
+            <p>
+                Sur la doc de bootstrap, nous allons utiliser cette commande composer :
+            </p>
+            <code>
+                composer require twbs/bootstrap:4.5.3
+            </code>
+            <p>
+                Ensuite, comme la dépendance c'est téléchargée dans le répertoire "vendor", qui n'est pas visible
+                par le public, il faut :
+            </p>
+            <ol>
+                <li>Créer, par exemple, un fichier "assets" à la racine du site</li>
+                <li>Y copier ce qui se trouve à l'intérieur du fichier "dist" présent dans
+                    <code>vendor/twbs/bootstrap/dist</code>
+                </li>
+                <li>
+                    ensuite faire le lien vers les fichiers requis pour utiliser bootstrap
+                </li>
+            </ol>
+            <p>
+                J'ai choisi de faire le lien dans un fichier include que je vais
+                appeler à chaque nouvelle page du site
             </p>
         </article>
     </section>

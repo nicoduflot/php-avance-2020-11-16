@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '770a84795796353faa76bb97ff02ed2c3892aa47',
+    'reference' => 'a5f14e2bcb550685080499ae9dc5855ac6afd99e',
     'name' => 'nduflot/php-avance-2020-11-16',
   ),
   'versions' => 
@@ -27,7 +27,23 @@
       'aliases' => 
       array (
       ),
-      'reference' => '770a84795796353faa76bb97ff02ed2c3892aa47',
+      'reference' => 'a5f14e2bcb550685080499ae9dc5855ac6afd99e',
+    ),
+    'twbs/bootstrap' => 
+    array (
+      'pretty_version' => 'v4.5.3',
+      'version' => '4.5.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a716fb03f965dc0846df479e14388b1b4b93d7ce',
+    ),
+    'twitter/bootstrap' => 
+    array (
+      'replaced' => 
+      array (
+        0 => 'v4.5.3',
+      ),
     ),
   ),
 );

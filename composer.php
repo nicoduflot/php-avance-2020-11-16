@@ -20,9 +20,9 @@ use App\Test;
     include "./src/includes/navigation.php";
     ?>
 </nav>
-<main>
-    <section>
-        <article>
+<main class="container">
+    <section class="row">
+        <article class="col-lg-12">
             <h1>Composer</h1>
             <h2>Principes</h2>
             <p>

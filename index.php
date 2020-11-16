@@ -27,9 +27,9 @@ use App\Arme;
             include "./src/includes/navigation.php";
             ?>
         </nav>
-        <main>
-            <section>
-                <article>
+        <main class="container">
+            <section class="row">
+                <article class="col-lg-12">
                     <h1>Programmation Orientée Objet</h1>
                     <h2>Principes</h2>
                     <p>

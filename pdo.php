@@ -221,7 +221,7 @@ use Doctrine\Common\Collections\ArrayCollection;
                 }
             }
 
-            $sql = "SELECT * FROM `jeux_video` ".$conditions;
+            $sql = "SELECT * FROM `jeux_video` ".$conditions. " ORDER BY `nom`";
             echo $sql."<br /><pre>";
             print_r($tabField);
             echo "</pre><br />";
@@ -335,6 +335,60 @@ use Doctrine\Common\Collections\ArrayCollection;
                     Ajouter le jeu</button>
             </form>
             <?php
+
+            //variables pour gérer les associations de conditions
+            $tabField = [];
+
+            //gestion des champs de filtre
+            if(isset($_POST["ajoutJeu"]) && $_POST["ajoutJeu"] === "ajoutJeu"){
+                if(isset($_POST["nom"]) && $_POST["nom"] !== ""){
+                    $tabField["nom"] = $_POST["nom"];
+                }
+                if(isset($_POST["possesseur"]) && $_POST["possesseur"] !== ""){
+                    $tabField["possesseur"] = $_POST["possesseur"];
+                }
+                if(isset($_POST["console"]) && $_POST["console"] !== ""){
+                    $tabField["console"] = $_POST["console"];
+                }
+                if(isset($_POST["prix"]) && $_POST["prix"] !== ""){
+                    $tabField["prix"] = $_POST["prix"];
+                }
+                if(isset($_POST["nbJmax"]) && $_POST["nbJmax"] !== ""){
+                    $tabField["nbre_joueurs_max"] = $_POST["nbJmax"];
+                }
+                if(isset($_POST["commentaires"]) && $_POST["commentaires"] !== ""){
+                    $tabField["commentaires"] = $_POST["commentaires"];
+                }
+
+                //fin gestion des champs de filtre
+                //préparation de la requête
+                $keys = " (";
+                $values = "(";
+                $i = 0;
+                foreach ($tabField as $key =>$value){
+                    echo "{$key} => {$value}<br />";
+                    if($i !== 0 && $i < count($tabField)){
+                        $keys .= ", ";
+                        $values .= ", ";
+                    }
+                    $i++;
+                    $keys .= $key;
+                    $values .= ":".$key;
+                }
+                $keys .= " )";
+                $values .= ")";
+                $sql = "INSERT INTO `jeux_video` ".$keys." VALUES ".$values." ;";
+
+                echo "<p>KEYS: ".$keys ."</p>";
+                echo "<p>VALUES: ".$values ."</p>";
+
+                echo $sql."<p><pre>";
+                print_r($tabField);
+                echo "</pre></p>";
+
+                $req = $bdd->prepare($sql);
+                $req->execute($tabField) or die(print_r($bdd->errorInfo()));
+            }
 
             ?>
         </article>

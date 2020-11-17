@@ -71,7 +71,7 @@ use Doctrine\Common\Collections\ArrayCollection;
                 $response = $bdd->query("SELECT * FROM `jeux_video`");
             </code>
             <?php
-            $response = $bdd->query("SELECT * FROM `jeux_video`");
+            $response = $bdd->query("SELECT * FROM `jeux_video`") or die(print_r($bdd->errorInfo()));
             //print_r($response); // n'affiche pas les enregistrements, mais seulement
             // les information concernant la requête
             ?>
@@ -187,7 +187,6 @@ use Doctrine\Common\Collections\ArrayCollection;
             $conditions = "";
             $nbCondition = 0;
             $case = null;
-
             $tabField = [];
             $tabConditions = new ArrayCollection();
 
@@ -207,11 +206,10 @@ use Doctrine\Common\Collections\ArrayCollection;
                     $tabField["console"] = $_GET["console"];
                     $tabConditions->add(" console = :console ");
                 }
-
             }
+
             //fin gestion des champs de filtre
             //préparation de la requête
-
             if($tabConditions->count() !== 0){
                 for($i = 0; $i < $tabConditions->count(); $i++){
                     if($i=== 0){
@@ -274,6 +272,76 @@ use Doctrine\Common\Collections\ArrayCollection;
             ?>
         </article>
     </section>
+    <section class="row">
+        <article class="col-lg-6">
+            <h1>Voir les erreurs</h1>
+            <p>en ajoutant :</p>
+            <code>
+                $bdd = new PDO(
+                "mysql:host=localhost;dbname=php-avance;charset=utf8",
+                "root",
+                "",
+                array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            </code>
+            <p>
+                si les requêtes utilisées sont en erreur, des erreurs lisibles seront affichées.
+            </p>
+            <p>
+                On peut améliorer l'affichage des erreurs en ajoutant quelque chose lors de la requête :
+            </p>
+            <code>
+                $response = $bdd->query("SELECT * FROM `jeux_video`")
+                or die(print_r($bdd->errorInfo()));
+            </code>
+        </article>
+        <article class="col-lg-6">
+            <h1>Manipulation des enregistrements</h1>
+            <h2>Ajoût de données</h2>
+            <form method="post">
+                <!--
+                [ID] => 1
+                [nom] => Super Mario Bros
+                [possesseur] => Florent
+                [console] => NES
+                [prix] => 4
+                [nbre_joueurs_max] => 1
+                [commentaires] => Un jeu d'anthologie !
+                -->
+                <fieldset class="form-group">
+                    <label for="nom">nom jeu</label>
+                    <input type="text" name="nom" id="nom" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="possesseur">possesseur</label>
+                    <input type="text" name="possesseur" id="possesseur" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="console">console</label>
+                    <input type="text" name="console" id="console" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="prix">prix</label>
+                    <input type="text" name="prix" id="prix" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="nbJmax">nbJmax</label>
+                    <input type="text" name="nbJmax" id="nbJmax" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="commentaires">Commentaires</label><br />
+                    <textarea name="commentaires" id="commentaires"></textarea>
+                </fieldset>
+                <button class="btn btn-primary" type="submit" name="ajoutJeu" id="ajoutJeu" value="ajoutJeu">
+                    Ajouter le jeu</button>
+            </form>
+            <?php
+
+            ?>
+        </article>
+    </section>
 </main>
+<footer>
+    &copy;Dawan
+</footer>
 </body>
 </html>

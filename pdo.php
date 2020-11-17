@@ -159,6 +159,121 @@ use Doctrine\Common\Collections\ArrayCollection;
             ?>
         </article>
     </section>
+    <section class="row">
+        <article class="col-lg-12">
+            <h2>Les requêtes préparées</h2>
+            <p>
+                Si on veut pouvoir choisir des paramètres pour la recherche (comme des filtres), il faut utiliser
+                les méthodes PDO de préparation de requête.
+            </p>
+            <form method="get">
+                <fieldset class="form-group">
+                    <label for="possesseur">Possesseur</label>
+                    <input type="text" name="possesseur" id="possesseur" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="prixmax">Prix max</label>
+                    <input type="number" name="prixmax" id="prixmax" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="console">Console</label>
+                    <input type="text" name="console" id="console" />
+                </fieldset>
+                <button class="btn btn-primary" name="soumettre" type="submit" value="soumettre">Rechercher</button>
+            </form>
+            <?php
+
+            //variables pour gérer les associations de conditions
+            $conditions = "";
+            $nbCondition = 0;
+            $case = null;
+
+            $tabField = [];
+            $tabConditions = new ArrayCollection();
+
+            //gestion des champs de filtre
+            if(isset($_GET["soumettre"]) && $_GET["soumettre"] === 'soumettre'){
+                if(isset($_GET["possesseur"]) && $_GET["possesseur"] !== ""){
+                    $tabField["possesseur"] = $_GET["possesseur"];
+                    $tabConditions->add(" possesseur = :possesseur ");
+                }
+                if(isset($_GET["prixmax"]) && $_GET["prixmax"] !== ""){
+                    //$tabField->add("prixmax;".$_GET["prixmax"]);
+                    $tabField["prixmax"] = $_GET["prixmax"];
+                    $tabConditions->add(" prix <= :prixmax ");
+                }
+                if(isset($_GET["console"]) && $_GET["console"] !== ""){
+                    //$tabField->add("console;".$_GET["console"]);
+                    $tabField["console"] = $_GET["console"];
+                    $tabConditions->add(" console = :console ");
+                }
+
+            }
+            //fin gestion des champs de filtre
+            //préparation de la requête
+
+            if($tabConditions->count() !== 0){
+                for($i = 0; $i < $tabConditions->count(); $i++){
+                    if($i=== 0){
+                        $conditions .= " WHERE ";
+                    }else{
+                        $conditions .= " AND ";
+                    }
+                    $conditions .= $tabConditions[$i];
+                }
+            }
+
+            $sql = "SELECT * FROM `jeux_video` ".$conditions;
+            echo $sql."<br /><pre>";
+            print_r($tabField);
+            echo "</pre><br />";
+
+            echo "<pre>";
+            print_r($tabConditions);
+            echo "</pre><br />";
+            echo "<pre>";
+            echo $conditions;
+            echo "</pre><br />";
+
+            $req = $bdd->prepare($sql);
+            $req->execute($tabField);
+
+            ?>
+            <div style="max-height: 200px;overflow: auto">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Jeu</th>
+                        <th>Possesseur</th>
+                        <th>Prix</th>
+                        <th>Console</th>
+                        <th>nb joueurs max</th>
+                        <th>Commentaire</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    while ($donnees = $req->fetch()){
+                        ?>
+                        <tr>
+                            <td><?php echo $donnees["nom"]; ?></td>
+                            <td><?php echo $donnees["possesseur"]; ?></td>
+                            <td><?php echo $donnees["prix"]; ?></td>
+                            <td><?php echo $donnees["console"]; ?></td>
+                            <td><?php echo $donnees["nbre_joueurs_max"]; ?></td>
+                            <td><?php echo $donnees["commentaires"]; ?></td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+            <?php
+            $req->closeCursor();
+            ?>
+        </article>
+    </section>
 </main>
 </body>
 </html>

@@ -199,7 +199,7 @@ class Personnage
     }
 
     /**
-     * @return false|float
+     * @return int
      */
     public function getBonusDegats()
     {
@@ -207,9 +207,9 @@ class Personnage
     }
 
     /**
-     * @param false|float $bonusDegats
+     * @param int $bonusDegats
      */
-    public function setBonusDegats($bonusDegats): void
+    public function setBonusDegats(int $bonusDegats): void
     {
         $this->bonusDegats = $bonusDegats;
     }

@@ -59,6 +59,4 @@ class Guerrier extends Personnage
     {
         $this->furie = $furie;
     }
-
-
 }

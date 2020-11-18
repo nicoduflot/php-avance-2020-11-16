@@ -8,7 +8,7 @@ class Personnage
 {
     //Attributs ou variables
     protected $name;
-    private $force;
+    protected $force;
     private $localisation;
     protected $experience;
     private $degats;
@@ -16,7 +16,7 @@ class Personnage
     private $tabRestauration =["1;10", "11;30", "31;50", "51;70", "71;100"];
     protected $arme;
     private $maxDegats;
-    private $bonusDegats;
+    protected $bonusDegats;
     private $uniqId;
 
     //constructeur
@@ -49,6 +49,16 @@ class Personnage
         echo $persoCible->getName()." a ".$persoCible->getDegats()." dégâts au total<br />";
         $this->gagnerExperience();
         echo $this->name." a maintenant ".$this->getExperience()." point(s) d'expérience<br />";
+    }
+
+    public function checkVitality(Personnage $persoCible){
+        if($persoCible->maxDegats <= $persoCible->getDegats()){
+            echo $persoCible->getName()." est hors de combat<br />";
+            echo "max dégâts : ".$persoCible->getMaxDegats()." dégâts subis : ".$persoCible->getDegats()."<br />";
+            return false;
+        }else{
+            return true;
+        }
     }
 
     public function gagnerExperience(){

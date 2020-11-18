@@ -122,7 +122,7 @@ use Doctrine\Common\Collections\ArrayCollection;
                 dans un tableau généré par une boucle
             </p>
             <?php
-            $response = $bdd->query("SELECT * FROM `jeux_video`");
+            $response = $bdd->query("SELECT * FROM `jeux_video` ORDER BY `nom`");
             ?>
             <div style="max-height: 200px;overflow: auto">
                 <table class="table">
@@ -141,7 +141,7 @@ use Doctrine\Common\Collections\ArrayCollection;
                     <?php
                     while ($donnees = $response->fetch()){
                     ?>
-                        <tr>
+                        <tr id="resUpdateJeux-<?php echo $donnees["ID"]; ?>">
                             <td><?php echo $donnees["nom"]; ?></td>
                             <td><?php echo $donnees["possesseur"]; ?></td>
                             <td><?php echo $donnees["prix"]; ?></td>

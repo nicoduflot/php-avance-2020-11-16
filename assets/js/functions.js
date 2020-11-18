@@ -1,18 +1,17 @@
-function loaded(callable){document.addEventListener("DOMContentLoaded", callable);}
-function $(selector){return document.querySelector(selector);}
-function $$(selector){return document.querySelectorAll(selector);}
-loaded(function(){
-    $$(".supJeu").forEach(function (item){
-        item.addEventListener("click", function (){
-            console.log(this.dataset.idjeu);
-            $("#idJeuSup").value = this.dataset.idjeu;
-        })
+$(document).ready(function(){
+    $(".supJeu").each(function (item){
+        $(this).on("click",function (){
+            console.log();
+            $("#idJeuSup").val(this.dataset.idjeu);
+        });
     });
-    $("#validSupJeu").addEventListener("click", function (){
-            fetch('./src/includes/supJeux.php?idJeu='+$("#idJeuSup").value)
-                .then(res => {
-                    //console.log("Request complete", res);
-                })
-            .catch(error => console.log("Erreur : " + error));
+    $("#validSupJeu").on("click", function (){
+        $.get('./src/includes/supJeux.php?idJeu='+$("#idJeuSup").val(), function (){
+            console.log('./src/includes/supJeux.php?idJeu='+$("#idJeuSup").val());
+            console.log("jeu supprimé");
+        });
+        $("#resUpdateJeux-"+$("#idJeuSup").val()).css("display", "none");
+        $("#resUpdateJeux-"+$("#idJeuSup").val()).css("visibility","hidden");
+        $("#modalSup").modal('toggle');
     });
 });

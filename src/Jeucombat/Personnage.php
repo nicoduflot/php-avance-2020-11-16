@@ -7,18 +7,19 @@ namespace Gam;
 class Personnage
 {
     //Attributs ou variables
-    private $name;
+    protected $name;
     private $force;
     private $localisation;
-    private $experience;
+    protected $experience;
     private $degats;
     private $vigueur;
     private $tabRestauration =["1;10", "11;30", "31;50", "51;70", "71;100"];
-    private $arme;
+    protected $arme;
     private $maxDegats;
     private $bonusDegats;
     private $uniqId;
 
+    //constructeur
     /**
      * Personnage constructor.
      * @param $name
@@ -38,6 +39,27 @@ class Personnage
         $this->uniqId = strval(date_timestamp_get(new \DateTime())).$this->name;
     }
 
+    //méthodes de Personnage
+
+    public function frapper(Personnage $persoCible){
+        echo $this->name." frappe ".$persoCible->getName()."<br />";
+        $degatsFrappe = $this->arme->getNiveauDegats()+$this->bonusDegats;
+        $persoCible->setDegats($persoCible->getDegats()+$degatsFrappe);
+        echo $this->name." a fait subir ".$degatsFrappe." dégâts<br />";
+        echo $persoCible->getName()." a ".$persoCible->getDegats()." dégâts au total<br />";
+        $this->gagnerExperience();
+        echo $this->name." a maintenant ".$this->getExperience()." point(s) d'expérience<br />";
+    }
+
+    public function gagnerExperience(){
+        $this->experience++;
+    }
+
+    public function seDeplacer($nouvelleSalle){
+        $this->localisation = $nouvelleSalle;
+    }
+
+    //gettesr & setters
     /**
      * @return mixed
      */

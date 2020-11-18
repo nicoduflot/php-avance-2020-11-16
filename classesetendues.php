@@ -2,6 +2,7 @@
 require "vendor/autoload.php";
 use Gam\Personnage;
 use Gam\Arme;
+use Gam\Mage;
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -28,10 +29,20 @@ use Gam\Arme;
             <h2>Principes</h2>
             <pre>
                 <?php
-                $perso1 = new Personnage("Froideval", new Arme("Epée", 2));
-                print_r($perso1);
+                $perso1 = new Mage("Froideval", new Arme("Epée", 2));
+                $perso2 = new Personnage("Simean", new Arme("Lance", 1));
+                //print_r($perso1);
                 ?>
             </pre>
+            <p>
+                <?php
+                $perso1->frapper($perso2);
+                $perso2->frapper($perso1);
+                $perso1->frapper($perso2);
+                $perso2->frapper($perso1);
+                $perso1->bouleDeFeu($perso2);
+                ?>
+            </p>
         </article>
     </section>
 </main>

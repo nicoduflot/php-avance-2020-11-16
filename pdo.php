@@ -134,6 +134,7 @@ use Doctrine\Common\Collections\ArrayCollection;
                         <th>Console</th>
                         <th>nb joueurs max</th>
                         <th>Commentaire</th>
+                        <th>Action(s)</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -147,6 +148,13 @@ use Doctrine\Common\Collections\ArrayCollection;
                             <td><?php echo $donnees["console"]; ?></td>
                             <td><?php echo $donnees["nbre_joueurs_max"]; ?></td>
                             <td><?php echo $donnees["commentaires"]; ?></td>
+                            <td>
+                                <a href="./updateJeuxVideo.php?action=modifJeu&idJeu=<?php echo $donnees["ID"]; ?>">
+                                    <button class="btn btn-primary">
+                                        Modifier
+                                    </button>
+                                </a>
+                            </td>
                         </tr>
                     <?php
                     }

@@ -177,7 +177,7 @@ use Doctrine\Common\Collections\ArrayCollection;
                         <div class="modal-body">
                             Êtes-vous sûr de vouloir supprimer ce jeu ?
                         </div>
-                        <input type="text" id="idJeuSup" value="" />
+                        <input type="hidden" id="idJeuSup" value="" />
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button id="validSupJeu" type="button" class="btn btn-primary">Save changes</button>

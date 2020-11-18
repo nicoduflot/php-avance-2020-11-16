@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInitcb6ed95a0e802bfea3c09b13b4eef19a
 {
     public static $prefixLengthsPsr4 = array (
+        'G' => 
+        array (
+            'Gam\\' => 4,
+        ),
         'D' => 
         array (
             'Doctrine\\Common\\Collections\\' => 28,
@@ -18,6 +22,10 @@ class ComposerStaticInitcb6ed95a0e802bfea3c09b13b4eef19a
     );
 
     public static $prefixDirsPsr4 = array (
+        'Gam\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Jeucombat',
+        ),
         'Doctrine\\Common\\Collections\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections',
@@ -29,7 +37,24 @@ class ComposerStaticInitcb6ed95a0e802bfea3c09b13b4eef19a
     );
 
     public static $classMap = array (
+        'App\\Arme' => __DIR__ . '/../..' . '/src/Classes/Arme.php',
+        'App\\Personnage' => __DIR__ . '/../..' . '/src/Classes/Personnage.php',
+        'App\\Test' => __DIR__ . '/../..' . '/src/Classes/Test.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Doctrine\\Common\\Collections\\AbstractLazyCollection' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/AbstractLazyCollection.php',
+        'Doctrine\\Common\\Collections\\ArrayCollection' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/ArrayCollection.php',
+        'Doctrine\\Common\\Collections\\Collection' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Collection.php',
+        'Doctrine\\Common\\Collections\\Criteria' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Criteria.php',
+        'Doctrine\\Common\\Collections\\Expr\\ClosureExpressionVisitor' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Expr/ClosureExpressionVisitor.php',
+        'Doctrine\\Common\\Collections\\Expr\\Comparison' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Expr/Comparison.php',
+        'Doctrine\\Common\\Collections\\Expr\\CompositeExpression' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Expr/CompositeExpression.php',
+        'Doctrine\\Common\\Collections\\Expr\\Expression' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Expr/Expression.php',
+        'Doctrine\\Common\\Collections\\Expr\\ExpressionVisitor' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Expr/ExpressionVisitor.php',
+        'Doctrine\\Common\\Collections\\Expr\\Value' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Expr/Value.php',
+        'Doctrine\\Common\\Collections\\ExpressionBuilder' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/ExpressionBuilder.php',
+        'Doctrine\\Common\\Collections\\Selectable' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Selectable.php',
+        'Gam\\Arme' => __DIR__ . '/../..' . '/src/Jeucombat/Arme.php',
+        'Gam\\Personnage' => __DIR__ . '/../..' . '/src/Jeucombat/Personnage.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -17,6 +17,6 @@ if(isset($_GET["idJeu"]) && $_GET["idJeu"] !== ""){
     $sql = "DELETE FROM `jeux_video` WHERE ID = :idJeux";
     $req = $bdd->prepare($sql);
     $req->execute(array("idJeux" => $idJeu)) or die(print_r($bdd->errorInfo()));
-    $donnees = $req->fetch();
+    //$donnees = $req->fetch();
     $req->closeCursor();
 }

@@ -22,13 +22,13 @@ class Personnage
      */
     public function __construct($name, $force, $degats, Arme $arme)
     {
-        $this->setName($name);
-        $this->setForce($force);
+        $this->name = $name;
+        $this->force = $force;
         $this->localisation ="Entrée du donjon";
         $this->experience = 1;
-        $this->setDegats($degats);
+        $this->degats = $degats;
         $this->arme = $arme;
-        $this->vigueur = $this->getForce();
+        $this->vigueur = $this->force;
     }
 
     //méthodes de Personnage

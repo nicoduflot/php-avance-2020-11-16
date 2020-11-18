@@ -154,9 +154,7 @@ use Doctrine\Common\Collections\ArrayCollection;
                                         Modifier
                                     </button>
                                 </a>
-                                <button type="button" class="btn btn-danger"
-                                        data-toggle="modal" data-target="#exampleModal"
-                                        data-idJeux="<?php echo $donnees["ID"]; ?>">
+                                <button type="button" class="btn btn-danger supJeu" data-toggle="modal" data-target="#modalSup" data-idjeu="<?php echo $donnees["ID"]; ?>">
                                     Supprimer
                                 </button>
                             </td>
@@ -167,7 +165,7 @@ use Doctrine\Common\Collections\ArrayCollection;
                     </tbody>
                 </table>
             </div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalSup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -177,11 +175,12 @@ use Doctrine\Common\Collections\ArrayCollection;
                             </button>
                         </div>
                         <div class="modal-body">
-                            ...
+                            Êtes-vous sûr de vouloir supprimer ce jeu ?
                         </div>
+                        <input type="hidden" id="idJeuSup" value="" />
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button id="validSupJeu" type="button" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>

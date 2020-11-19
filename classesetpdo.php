@@ -56,7 +56,7 @@ use Gam\Guerrier;
                 "   `personnage` as `p` LEFT JOIN ".
                 "   `classe_personnage` as `cp` on ".
                 "   `p`.`id_class` = `cp`.`id`";
-            echo $sql."<br />";
+            //echo $sql."<br />";
             $req = $bdd->prepare($sql);
             $req->execute() or die(print_r($bdd->errorInfo()));
             ?>

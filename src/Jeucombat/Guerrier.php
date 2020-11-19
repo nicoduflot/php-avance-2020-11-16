@@ -7,7 +7,7 @@ namespace Gam;
 class Guerrier extends Personnage
 {
 
-    private $furie;
+
 
     //
     /**
@@ -16,7 +16,7 @@ class Guerrier extends Personnage
     public function __construct($name, Arme $arme)
     {
         parent::__construct($name, $arme);
-        $this->furie = ceil($this->force/2);
+
     }
 
     //methodes de guerrier
@@ -41,22 +41,5 @@ class Guerrier extends Personnage
             echo "</div>";
             $this>$this->setFurie($this->furie - 5);
         }
-    }
-
-    //getters setters
-    /**
-     * @return int
-     */
-    public function getFurie(): int
-    {
-        return $this->furie;
-    }
-
-    /**
-     * @param int $furie
-     */
-    public function setFurie(int $furie): void
-    {
-        $this->furie = $furie;
     }
 }

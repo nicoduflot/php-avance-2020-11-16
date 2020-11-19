@@ -40,7 +40,7 @@ use Gam\Guerrier;
                 <?php
                 $perso1 = new Mage("Froideval", new Arme("Epée", 2));
                 $perso2 = new Guerrier("Simean", new Arme("Lance", 1));
-                //print_r($perso2);
+                print_r($perso2);
                 ?>
             </pre>
             <p>

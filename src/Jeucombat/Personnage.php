@@ -8,16 +8,19 @@ class Personnage
 {
     //Attributs ou variables
     protected $name;
+    private $uniqId;
     protected $force;
+    private $vigueur;
+    private $maxDegats;
     private $localisation;
     protected $experience;
     private $degats;
-    private $vigueur;
-    private $tabRestauration =["1;10", "11;30", "31;50", "51;70", "71;100"];
     protected $arme;
-    private $maxDegats;
     protected $bonusDegats;
-    private $uniqId;
+    protected $mana;
+    protected $furie;
+    private $tabRestauration =["1;10", "11;30", "31;50", "51;70", "71;100"];
+
 
     //constructeur
     /**
@@ -37,6 +40,8 @@ class Personnage
         $this->maxDegats = random_int(100, 200);
         $this->bonusDegats = ceil($this->force/5);
         $this->uniqId = strval(date_timestamp_get(new \DateTime())).$this->name;
+        $this->mana = random_int(10, 40);
+        $this->furie = ceil($this->force/2);
     }
 
     //méthodes de Personnage
@@ -214,4 +219,53 @@ class Personnage
         $this->bonusDegats = $bonusDegats;
     }
 
+    //getters setters
+    /**
+     * @return int
+     */
+    public function getMana(): int
+    {
+        return $this->mana;
+    }
+
+    /**
+     * @param int $mana
+     */
+    public function setMana(int $mana): void
+    {
+        $this->mana = $mana;
+    }
+
+    //getters setters
+    /**
+     * @return int
+     */
+    public function getFurie(): int
+    {
+        return $this->furie;
+    }
+
+    /**
+     * @param int $furie
+     */
+    public function setFurie(int $furie): void
+    {
+        $this->furie = $furie;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUniqId(): string
+    {
+        return $this->uniqId;
+    }
+
+    /**
+     * @param string $uniqId
+     */
+    public function setUniqId(string $uniqId): void
+    {
+        $this->uniqId = $uniqId;
+    }
 }

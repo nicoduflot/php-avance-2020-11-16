@@ -481,10 +481,57 @@ group by
                     </tbody>
                 </table>
             </div>
+            <?php
+            $req->closeCursor();
+            ?>
             <h2>Somme (sum())</h2>
             <p>
-                Pour utiliser sum(), il faut tout d'abord l'utiliser sur une valeur numérique, et ensuite utiliser un groupement
+                Pour utiliser sum(), il faut tout d'abord l'utiliser sur une valeur
+                numérique, et ensuite utiliser un groupement.
             </p>
+            <pre>
+SELECT
+	`console`, sum(`prix`) as `total_vente_par_console`
+FROM
+	`jeux_video`
+group by
+	`console`
+            </pre>
+            <?php
+            $sql =  "SELECT".
+                " `console`, sum(`prix`) as `total_vente_par_console` ".
+                " FROM ".
+                "   `jeux_video` ".
+                " group by ".
+                "   `console`";
+            $req = $bdd->prepare($sql);
+            $req->execute() or die(print_r($bdd->errorInfo()));
+            ?>
+            <div style="max-height: 200px;overflow: auto">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Console</th>
+                        <th>Total vente parx console</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    while ($donnees = $req->fetch()){
+                        ?>
+                        <tr>
+                            <td><?php echo $donnees["console"]; ?></td>
+                            <td><?php echo $donnees["total_vente_par_console"]; ?></td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+            <?php
+            $req->closeCursor();
+            ?>
         </article>
     </section>
 </main>

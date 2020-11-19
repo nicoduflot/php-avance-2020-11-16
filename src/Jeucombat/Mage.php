@@ -7,12 +7,11 @@ namespace Gam;
 class Mage extends Personnage
 {
 
-    private $mana;
+
     //constructeur
     public function __construct($name, Arme $arme)
     {
         parent::__construct($name, $arme);
-        $this->mana = random_int(10, 40);
     }
     //methodes
     public function gagnerExperience()
@@ -40,20 +39,5 @@ class Mage extends Personnage
     }
 
 
-    //getters setters
-    /**
-     * @return int
-     */
-    public function getMana(): int
-    {
-        return $this->mana;
-    }
 
-    /**
-     * @param int $mana
-     */
-    public function setMana(int $mana): void
-    {
-        $this->mana = $mana;
-    }
 }

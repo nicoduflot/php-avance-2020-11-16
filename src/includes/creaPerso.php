@@ -4,6 +4,18 @@ use Gam\Personnage;
 use Gam\Arme;
 use Gam\Mage;
 use Gam\Guerrier;
+
+function objectToJSON($object) {
+    $properties = get_object_vars($object);
+    foreach($properties as &$value){
+        if(is_object($value) && method_exists($value,'getJsonData')){
+            $value = $value->getJsonData();
+        }
+    }
+    return json_encode($properties);
+}
+
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -53,6 +65,27 @@ use Gam\Guerrier;
                 <header class="col-lg-12">
                     <h1><?php echo $classePerso." créé !"; ?></h1>
                 </header>
+                <p>
+                    <?php
+                    $tabPerso = [];
+                    $tabPerso["uniqueid"] = $perso->getUniqId();
+                    $tabPerso["nom"] = $perso->getName();
+                    $tabPerso["classe"] = $classePerso;
+                    $tabPerso["strength"] = $perso->getForce();
+                    $tabPerso["vigueur"] = $perso->getVigueur();
+                    $tabPerso["max_degats"] = $perso->getMaxDegats();
+                    $tabPerso["nomArme"] = $perso->getArme()->getNom();
+                    $tabPerso["niveauArme"] = $perso->getArme()->getNiveauDegats();
+                    $tabPerso["bonus_degats"] = $perso->getBonusDegats();
+                    $tabPerso["mana"] = $perso->getMana();
+                    $tabPerso["furie"] = $perso->getFurie();
+                    ?>
+                </p>
+                <pre>
+                    <?php
+                    //print_r($tabPerso);
+                    ?>
+                </pre>
             </div>
             <div class="row">
                 <div class="col-lg-4">
@@ -85,6 +118,12 @@ use Gam\Guerrier;
                 <div class="col-lg-4">
                     Bonus Dégâts : <?php echo $perso->getBonusDegats(); ?>
                 </div>
+            </div>
+            <div class="enregPerso" style="opacity: 0;width: 0;height: 0"><?php echo json_encode($tabPerso); ?></div>
+            <div class="row">
+                <button type="submit" id="enregPerso" name="enregPerso">
+                    enregistrer le personnage
+                </button>
             </div>
             <?php
             echo "<pre>";

@@ -37,7 +37,8 @@ if (isset($_GET["action"]) && $_GET["action"] === 'modifJeu') {
                     ." `console` = ". ":console, "
                     ." `prix` = ". ":prix, "
                     ." `nbre_joueurs_max` = ". ":nbre_joueurs_max, "
-                    ." `commentaires` = ". ":commentaires "
+                    ." `commentaires` = ". ":commentaires, "
+                    ." `date_modif` = now() "
                     ." WHERE ID = :idJeux";
         $params["idJeux"]= $idJeu;
         $params["nom"]= $_POST["nom"];

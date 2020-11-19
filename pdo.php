@@ -432,7 +432,59 @@ use Doctrine\Common\Collections\ArrayCollection;
                 Pour utiliser la somme ou le dénombrage, il faut généralement grouper les résultats dans les conditions
                 de la requête.
             </p>
+            <h2>GROUP BY</h2>
+            <p>
+                GROUP by permet de regrouper les résultat par colonne. Cela ne sert pas à grand chose
+                si vous n'utilisez pas une fonction d'agrégation (count(), sum() par exemple).
+            </p>
+            <h2>count()</h2>
+            <p>
+                Count permet de compter les itération d'une colonne lors d'un regroupement.
+            </p>
+            <pre>
+SELECT
+	`console`, count(ID) as `nb_jeu_console`
+FROM
+	`jeux_video`
+group by
+	`console`
+            </pre>
+            <?php
+                $sql =  "SELECT".
+                        " `console`, count(ID) as `nb_jeu_console` ".
+                        " FROM ".
+                        "   `jeux_video` ".
+                        " group by ".
+                        "   `console`";
+                $req = $bdd->prepare($sql);
+                $req->execute() or die(print_r($bdd->errorInfo()));
+            ?>
+            <div style="max-height: 200px;overflow: auto">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Console</th>
+                        <th>nb jeux console</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    while ($donnees = $req->fetch()){
+                        ?>
+                        <tr>
+                            <td><?php echo $donnees["console"]; ?></td>
+                            <td><?php echo $donnees["nb_jeu_console"]; ?></td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
             <h2>Somme (sum())</h2>
+            <p>
+                Pour utiliser sum(), il faut tout d'abord l'utiliser sur une valeur numérique, et ensuite utiliser un groupement
+            </p>
         </article>
     </section>
 </main>

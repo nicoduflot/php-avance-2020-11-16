@@ -59,4 +59,14 @@ class Arme
         }
         $this->niveauDegats = $niveauDegats;
     }
+
+    /**
+     * @return string[]
+     */
+    public function getTabDegats(): array
+    {
+        return $this->tabDegats;
+    }
+
+
 }

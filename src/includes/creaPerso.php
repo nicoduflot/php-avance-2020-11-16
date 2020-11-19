@@ -22,8 +22,9 @@ use Gam\Guerrier;
     <section class="row">
         <article class="col-lg-10">
         <?php
+        //$tabDegats = ["0;1", "1;5", "6;10", "11;15"];
         if(isset($_POST["creaPerso"]) && $_POST["creaPerso"] === "creaPerso"){
-            echo "CreaPerso";
+            //echo "CreaPerso";
             $classePerso = $_POST["classe"];
             //$perso = new $_POST["classe"];
             $nomPerso = ($_POST["nom"] !== "" ? $_POST["nom"] : "John Doe");
@@ -49,7 +50,41 @@ use Gam\Guerrier;
             }
             ?>
             <div class="row">
+                <header class="col-lg-12">
+                    <h1><?php echo $classePerso." créé !"; ?></h1>
+                </header>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    Nom : <?php echo $perso->getName(); ?>
+                </div>
+                <div class="col-lg-4">
+                    Force : <?php echo $perso->getForce(); ?>
+                </div>
+                <div class="col-lg-4">
+                    Max Dégâts : <?php echo $perso->getMaxDegats(); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    Vigueur : <?php echo $perso->getVigueur(); ?>
+                </div>
+                <div class="col-lg-4">
+                    Mana : <?php echo $perso->getMana(); ?>
+                </div>
+                <div class="col-lg-4">
+                    Furie : <?php echo $perso->getFurie(); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    Arme : <?php echo $perso->getArme()->getNom(); ?>
 
+                    Dégât : <?php echo $perso->getArme()->getTabDegats()[$_POST["niveauArme"]]; ?>
+                </div>
+                <div class="col-lg-4">
+                    Bonus Dégâts : <?php echo $perso->getBonusDegats(); ?>
+                </div>
             </div>
             <?php
             echo "<pre>";

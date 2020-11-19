@@ -7,12 +7,11 @@ $(document).ready(function(){
     });
     $("#validSupJeu").on("click", function (){
         $.get('./src/includes/supJeux.php?idJeu='+$("#idJeuSup").val(), function (){
-            //console.log('./src/includes/supJeux.php?idJeu='+$("#idJeuSup").val());
-            //console.log("jeu supprimé");
+        }).then(function (){
+            $("#resUpdateJeux-"+$("#idJeuSup").val()).css("display", "none");
+            $("#resUpdateJeux-"+$("#idJeuSup").val()).css("visibility","hidden");
+            $("#modalSup").modal('toggle');
         });
-        $("#resUpdateJeux-"+$("#idJeuSup").val()).css("display", "none");
-        $("#resUpdateJeux-"+$("#idJeuSup").val()).css("visibility","hidden");
-        $("#modalSup").modal('toggle');
     });
 
     $("#enregPerso").on("click", function (){
@@ -20,6 +19,8 @@ $(document).ready(function(){
         console.log('./enregPerso.php?json='+perso);
         $.get('./enregPerso.php?json='+perso, function (){
 
+        }).then(function (){
+            window.location.replace("../../classesetpdo.php");
         });
 
     });

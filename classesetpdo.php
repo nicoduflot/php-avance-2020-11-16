@@ -37,8 +37,8 @@ use Gam\Guerrier;
             </p>
             <ul>
                 <li><a href="./src/includes/creaPerso.php?classe=Personnage">Un personnage lambda</a></li>
-                <li><a href="./src/includes/creaPerso.php?classe=Personnage">Un Mage</a></li>
-                <li><a href="./src/includes/creaPerso.php?classe=Personnage">Un Guerrier</a></li>
+                <li><a href="./src/includes/creaPerso.php?classe=Mage">Un Mage</a></li>
+                <li><a href="./src/includes/creaPerso.php?classe=Guerrier">Un Guerrier</a></li>
             </ul>
             <?php
             try {
@@ -56,7 +56,6 @@ use Gam\Guerrier;
                 "   `personnage` as `p` LEFT JOIN ".
                 "   `classe_personnage` as `cp` on ".
                 "   `p`.`id_classe` = `cp`.`id`";
-            echo $sql."<br />";
             $req = $bdd->prepare($sql);
             $req->execute() or die(print_r($bdd->errorInfo()));
             ?>

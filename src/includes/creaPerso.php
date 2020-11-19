@@ -5,17 +5,6 @@ use Gam\Arme;
 use Gam\Mage;
 use Gam\Guerrier;
 
-function objectToJSON($object) {
-    $properties = get_object_vars($object);
-    foreach($properties as &$value){
-        if(is_object($value) && method_exists($value,'getJsonData')){
-            $value = $value->getJsonData();
-        }
-    }
-    return json_encode($properties);
-}
-
-
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -33,12 +22,10 @@ function objectToJSON($object) {
 <main class="container">
     <section class="row">
         <article class="col-lg-10">
+            <a href="../../classesetpdo.php">Retour</a>
         <?php
-        //$tabDegats = ["0;1", "1;5", "6;10", "11;15"];
         if(isset($_POST["creaPerso"]) && $_POST["creaPerso"] === "creaPerso"){
-            //echo "CreaPerso";
             $classePerso = $_POST["classe"];
-            //$perso = new $_POST["classe"];
             $nomPerso = ($_POST["nom"] !== "" ? $_POST["nom"] : "John Doe");
             $nomArme = ($_POST["nomArme"] !== "" ? $_POST["nomArme"] : "Gertrude");
             if($_POST["niveauArme"] === "0"){
@@ -81,11 +68,6 @@ function objectToJSON($object) {
                     $tabPerso["furie"] = $perso->getFurie();
                     ?>
                 </p>
-                <pre>
-                    <?php
-                    //print_r($tabPerso);
-                    ?>
-                </pre>
             </div>
             <div class="row">
                 <div class="col-lg-4">
@@ -121,14 +103,11 @@ function objectToJSON($object) {
             </div>
             <div class="enregPerso" style="opacity: 0;width: 0;height: 0"><?php echo json_encode($tabPerso); ?></div>
             <div class="row">
-                <button type="submit" id="enregPerso" name="enregPerso">
+                <button type="button" class="btn btn-primary" id="enregPerso" name="enregPerso">
                     enregistrer le personnage
                 </button>
             </div>
             <?php
-            echo "<pre>";
-            print_r($perso);
-            echo "<pre>";
         }elseif(isset($_GET["classe"]) && $_GET["classe"] !== ""){
                 $classePerso = $_GET["classe"];
                 ?>

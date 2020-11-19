@@ -424,6 +424,17 @@ use Doctrine\Common\Collections\ArrayCollection;
             ?>
         </article>
     </section>
+    <section class="row">
+        <article class="col-lg-12">
+            <h1>Requête d'agrégation</h1>
+            <p>
+                L'agrégation en SQL permet de regrouper les résultats en utilisant des sommes, du dénombrage, etc.
+                Pour utiliser la somme ou le dénombrage, il faut généralement grouper les résultats dans les conditions
+                de la requête.
+            </p>
+            <h2>Somme (sum())</h2>
+        </article>
+    </section>
 </main>
 <footer>
     &copy;Dawan

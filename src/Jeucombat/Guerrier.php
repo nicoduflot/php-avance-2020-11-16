@@ -7,8 +7,6 @@ namespace Gam;
 class Guerrier extends Personnage
 {
 
-
-
     //
     /**
      * Guerrier constructor.

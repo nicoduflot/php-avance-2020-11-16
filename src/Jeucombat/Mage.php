@@ -7,7 +7,6 @@ namespace Gam;
 class Mage extends Personnage
 {
 
-
     //constructeur
     public function __construct($name, Arme $arme)
     {

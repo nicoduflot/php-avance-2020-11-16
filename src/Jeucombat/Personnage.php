@@ -21,7 +21,6 @@ class Personnage
     protected $furie;
     private $tabRestauration =["1;10", "11;30", "31;50", "51;70", "71;100"];
 
-
     //constructeur
     /**
      * Personnage constructor.

@@ -67,6 +67,4 @@ class Arme
     {
         return $this->tabDegats;
     }
-
-
 }

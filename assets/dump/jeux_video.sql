@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `jeux_video` (
   `nbre_joueurs_max` int(11) NOT NULL DEFAULT '0',
   `commentaires` text NOT NULL,
   KEY `ID` (`ID`)) 
-  ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=51 ;
+  ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=0 ;
 
   ALTER TABLE `jeux_video` ADD `date_ajout` DATETIME NULL AFTER `commentaires`;
 ALTER TABLE `jeux_video` CHANGE `date_ajout` `date_ajout` DATETIME NULL DEFAULT CURRENT_TIMESTAMP;

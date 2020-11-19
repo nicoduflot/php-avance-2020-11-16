@@ -44,8 +44,14 @@ use Gam\Guerrier;
                     break;
                 default:
                     $perso = new Personnage($nomPerso, new Arme($nomArme, $niveauArme));
+                    $classePerso = "Personnage";
 
             }
+            ?>
+            <div class="row">
+
+            </div>
+            <?php
             echo "<pre>";
             print_r($perso);
             echo "<pre>";

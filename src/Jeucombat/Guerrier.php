@@ -18,7 +18,7 @@ class Guerrier extends Personnage
     }
 
     //methodes de guerrier
-    public function attaqueBrutale(Personnage $persoCible){
+    public function multi(Personnage $persoCible){
         //une attaque brutale consomme 5 points de furie
         if($this->furie - 5 < 0){
             echo "<h3 style='background-color: #ba8b00;color: #fff;font-weight: bold;padding:2px;'>".

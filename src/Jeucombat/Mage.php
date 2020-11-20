@@ -18,7 +18,7 @@ class Mage extends Personnage
         $this->experience = $this->experience + 2;
     }
 
-    public function bouleDeFeu(Personnage $persoCible){
+    public function multi(Personnage $persoCible){
         //une boule de feu consomme 10 mana
         if($this->mana - 10 < 0){
             echo "<h3 style='background-color: #ff0000;color: #fff;font-weight: bold;padding:2px;'>".

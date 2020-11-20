@@ -75,7 +75,7 @@ use Gam\Guerrier;
                 <?php
                 while ($perso1->checkVitality($perso2) && $perso2->checkVitality($perso1)){
                     if(random_int(1, 3)== 3){
-                        $perso2->attaqueBrutale($perso1);
+                        $perso2->multi($perso1);
                     }else{
                         if(random_int(1, 3)== 3){
                             $perso2->seRestaurer(1);
@@ -88,7 +88,7 @@ use Gam\Guerrier;
                         exit();
                     }
                     if(random_int(1, 3)== 3){
-                        $perso1->bouleDeFeu($perso2);
+                        $perso1->multi($perso2);
                     }else{
                         if(random_int(1, 3)== 3){
                             $perso1->seRestaurer(1);

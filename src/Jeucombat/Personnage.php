@@ -89,6 +89,28 @@ class Personnage
         $this->setVigueur($restauration);
     }
 
+    public function multi(Personnage $persoCible){
+        //une attaque brutale consomme 5 points de furie
+        if($this->furie - 5 < 0){
+            echo "<h3 style='background-color: #ba8b00;color: #fff;font-weight: bold;padding:2px;'>".
+                $this->getName()." n'a pas assez de furie pour lancer \"Frappe FORT\"</h3>";
+        }else{
+            echo "<h3>".$this->getName()." lance \"Frappe FORT\"</h3>".
+                "<div style='background-color: #ba8b00;color: #fff;font-weight: bold;padding:2px;'>";
+
+            $tempDegat = $this->getBonusDegats();
+            $this->setBonusDegats($tempDegat*2);
+            echo "les bonus dégâts passent de ".$tempDegat. " à ".$this->getBonusDegats()."<br />";
+            $this->frapper($persoCible);
+            $this->setBonusDegats($tempDegat);
+            echo "Fin de \"Frappe FORT\" les bonus dégâts sont revenus à ".
+                $this->getBonusDegats()."<br />";
+
+            echo "</div>";
+            $this>$this->setFurie($this->furie - 5);
+        }
+    }
+
     //gettesr & setters
     /**
      * @return mixed

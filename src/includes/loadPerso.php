@@ -5,9 +5,7 @@ use Gam\Arme;
 use Gam\Mage;
 use Gam\Guerrier;
 include "./functions.php";
-
 $errorPerso = "";
-
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -31,70 +29,136 @@ $errorPerso = "";
             <?php
             if(isset($_GET["idPerso"]) && $_GET["idPerso"] !== ""){
                 $idPerso = $_GET["idPerso"];
-                try {
-                    $bdd = new PDO("mysql:host=localhost;dbname=php-avance;charset=utf8",
-                        "root",
-                        "", array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION));
-                    //$bdd->
-                } catch (Exception $e) {
-                    die("Erreur connexion : " . $e->getMessage());
-                }
-//`p`.``
-
-                /*
-                $tabPerso["uniqueid"] = $perso->getUniqId();
-                    $tabPerso["nom"] = $perso->getName();
-                    $tabPerso["id_classe"] = $classePerso;
-                    $tabPerso["strength"] = $perso->getForce();
-                    $tabPerso["vigueur"] = $perso->getVigueur();
-                    $tabPerso["max_degats"] = $perso->getMaxDegats();
-                    $tabPerso[""] = $perso->getArme()->getNom();
-                    $tabPerso["niveauArme"] = $niveauArme;
-                    $tabPerso["bonus_degats"] = $perso->getBonusDegats();
-                    $tabPerso["mana"] = $perso->getMana();
-                    $tabPerso["furie"] = $perso->getFurie();
-                 */
-                $sql =  " SELECT " .
-                        "   `p`.`id` as `idperso`, `p`.`nom` as `nomperso`, `cp`.`nom` as `nomclasse`, " .
-                        "   `p`.`uniqueid`, `a`.`nom` as `nom_arme`, `a`.`niveau_degats`, " .
-                        "   `p`.`strength`, `p`.`vigueur`, `p`.`max_degats`, `p`.`id_localisation`,   ".
-                        "   `l`.`nom` as `localisation`, `p`.`experience`, `p`.`degats` ".
-                        "   ".
-                        "".
-                        " FROM " .
-                        "   `personnage` as `p` LEFT JOIN " .
-                        "   `classe_personnage` as `cp` ON `p`.`id_classe` = `cp`.`id` LEFT JOIN " .
-                        "   `arme` as `a` ON `p`.`id_arme` = `a`.`id` LEFT JOIN ".
-                        "   `localisation` as `l` ON `l`.`id` = `p`.`id_localisation` ".
-                        " WHERE `p`.`id` = :idperso; ";
-                $req = $bdd->prepare($sql);
-                //echo $sql;
-                $req->execute(array("idperso"=>$idPerso)) or die(print_r($bdd->errorInfo()));
+                $req = getPersoData($idPerso);
                 if($req->rowCount()>0){
                     $donnees = $req->fetch(PDO::FETCH_ASSOC);
-                    echo "<pre>";
-                    var_dump($donnees);
-                    echo "</pre>";
-                    $perso = createPerso($donnees["nomclasse"],$donnees["nomperso"], $donnees["nom_arme"], $donnees["niveau_degats"]);
+                    $perso = loadPerso($donnees);
+                    ?>
+                    <div class="row">
+                        <header class="col-lg-12">
+                            <h1><?php echo $perso->getName()." le ".$donnees["nomclasse"]; ?></h1>
+                        </header>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            Nom : <?php echo $perso->getName(); ?>
+                        </div>
+                        <div class="col-lg-4">
+                            Force : <?php echo $perso->getForce(); ?>
+                        </div>
+                        <div class="col-lg-4">
+                            Max Dégâts : <?php echo $perso->getMaxDegats(); ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            Vigueur : <?php echo $perso->getVigueur(); ?>
+                        </div>
+                        <div class="col-lg-4">
+                            Mana : <?php echo $perso->getMana(); ?>
+                        </div>
+                        <div class="col-lg-4">
+                            Furie : <?php echo $perso->getFurie(); ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            Arme : <?php echo $perso->getArme()->getNom(); ?>
 
-                    $perso->setForce($donnees["strength"]);
-                    $perso->setVigueur($donnees["vigueur"]);
-                    $perso->setMaxDegats($donnees["max_degats"]);
-                    $perso->setLocalisation($donnees["localisation"]);
-                    $perso->setExperience($donnees["experience"]);
-                    $perso->setDegats($donnees["degats"]);
-                    echo "<pre>";
-                    var_dump($perso);
-                    echo "</pre>";
-
+                            Dégât : <?php echo $perso->getArme()->getTabDegats()[$donnees["niveau_degats"]]; ?>
+                        </div>
+                        <div class="col-lg-4">
+                            Bonus Dégâts : <?php echo $perso->getBonusDegats(); ?>
+                        </div>
+                    </div>
+                    <?php
+                    $req->closeCursor();
                 }else{
-                        $errorPerso .= "<h3>Ce personnage n'existe pas</h3>";
+                    $errorPerso .= "<h3>Ce personnage n'existe pas</h3>";
                 }
+                //génération du "méchant"
+                $req = getPersoData(randomEnemy($idPerso));
+                if($req->rowCount()>0){
+                    $donnees = $req->fetch(PDO::FETCH_ASSOC);
+                    $perso2 = loadPerso($donnees);
+                    ?>
+                    <div class="row">
+                        <header class="col-lg-12">
+                            <h1><?php echo $perso2->getName()." le ".$donnees["nomclasse"]; ?></h1>
+                        </header>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            Nom : <?php echo $perso2->getName(); ?>
+                        </div>
+                        <div class="col-lg-4">
+                            Force : <?php echo $perso2->getForce(); ?>
+                        </div>
+                        <div class="col-lg-4">
+                            Max Dégâts : <?php echo $perso2->getMaxDegats(); ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            Vigueur : <?php echo $perso2->getVigueur(); ?>
+                        </div>
+                        <div class="col-lg-4">
+                            Mana : <?php echo $perso2->getMana(); ?>
+                        </div>
+                        <div class="col-lg-4">
+                            Furie : <?php echo $perso2->getFurie(); ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            Arme : <?php echo $perso2->getArme()->getNom(); ?>
+
+                            Dégât : <?php echo $perso2->getArme()->getTabDegats()[$donnees["niveau_degats"]]; ?>
+                        </div>
+                        <div class="col-lg-4">
+                            Bonus Dégâts : <?php echo $perso2->getBonusDegats(); ?>
+                        </div>
+                    </div>
+                    <?php
+                    $req->closeCursor();
+                }else{
+                    $errorPerso .= "<h3>Ce personnage n'existe pas</h3>";
+                }
+                ?>
+                <?php
+                while ($perso->checkVitality($perso2) && $perso2->checkVitality($perso)){
+                    if(random_int(1, 3)== 3){
+                        $perso2->multi($perso);
+                    }else{
+                        if(random_int(1, 3)== 3){
+                            $perso2->seRestaurer(1);
+                        }else{
+                            $perso2->frapper($perso);
+                        }
+                    }
+                    if(!$perso2->checkVitality($perso)){
+                        exit();
+                    }
+                    if(random_int(1, 3)== 3){
+                        $perso->multi($perso2);
+                    }else{
+                        if(random_int(1, 3)== 3){
+                            $perso->seRestaurer(1);
+                        }else{
+                            $perso->frapper($perso2);
+                        }
+                    }
+
+                    if(!$perso->checkVitality($perso2)){
+                        exit();
+                    }
+                }
+                ?>
+            <?php
+
             }else{
                 $errorPerso .= "<h3>Ce personnage n'existe pas</h3>";
             }
-
-
             ?>
         </article>
     </section>

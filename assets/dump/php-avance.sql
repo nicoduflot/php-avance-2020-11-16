@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 19 nov. 2020 à 17:23
+-- Généré le :  ven. 20 nov. 2020 à 13:25
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.3.1
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `arme` (
   `nom` varchar(255) NOT NULL,
   `niveau_degats` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `arme`
@@ -42,10 +42,14 @@ CREATE TABLE IF NOT EXISTS `arme` (
 
 INSERT INTO `arme` (`id`, `nom`, `niveau_degats`) VALUES
 (1, 'Mains nues', 1),
-(2, 'Poignard', 4),
-(3, 'Hache à trois mains', 15),
-(4, 'Epée en fer', 5),
-(5, 'Epée en acier', 7);
+(2, 'Poignard', 1),
+(3, 'Hache à trois mains', 3),
+(4, 'Epée en fer', 1),
+(5, 'Epée en acier', 2),
+(6, 'Double mortensen', 3),
+(7, 'Epée en acier', 2),
+(8, 'Epée en acier', 3),
+(9, 'Epée en acier', 9);
 
 -- --------------------------------------------------------
 
@@ -114,7 +118,6 @@ INSERT INTO `jeux_video` (`ID`, `nom`, `possesseur`, `console`, `prix`, `nbre_jo
 (18, 'Super Mario Bros 3', 'Michel', 'SuperNES', 10, 2, 'Le meilleur Mario selon moi.', '2020-11-19 10:24:00', '2020-11-19 10:24:00'),
 (19, 'SSX 3', 'Florent', 'Xbox', 56, 2, 'Un très bon jeu de snow !', '2020-11-19 10:24:00', '2020-11-19 10:24:00'),
 (20, 'Star Wars : Jedi outcast', 'Patrick', 'Xbox', 33, 1, 'Encore un jeu sur star-wars où on se prend pour Luke Skywalker !', '2020-11-19 10:24:00', '2020-11-19 10:24:00'),
-(21, 'Actua Soccer 3', 'Patrick', 'PS', 30, 2, 'Un jeu de foot assez bof ...', '2020-11-19 10:24:00', '2020-11-19 10:26:16'),
 (22, 'Time Crisis 3', 'Florent', 'PS2', 40, 1, 'Un troisième volet efficace mais pas vraiment surprenant', '2020-11-19 10:24:00', '2020-11-19 10:24:00'),
 (23, 'X-FILES', 'Patrick', 'PS', 25, 1, 'Un jeu censé ressembler a la série mais assez raté ...', '2020-11-19 10:24:00', '2020-11-19 10:24:00'),
 (24, 'Soul Calibur 2', 'Patrick', 'Xbox', 54, 1, 'Un jeu bien axé sur le combat', '2020-11-19 10:24:00', '2020-11-19 10:24:00'),
@@ -188,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `personnage` (
   `mana` int(11) NOT NULL,
   `furie` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `personnage`
@@ -200,7 +203,8 @@ INSERT INTO `personnage` (`id`, `uniqueid`, `nom`, `id_classe`, `strength`, `vig
 (3, '1605801070Cold WInter', 'Cold WInter', 1, 33, 33, 115, 1, 0, 0, 4, 7, 29, 17),
 (4, '1605801121Adams', 'Adams', 1, 27, 27, 157, 1, 0, 0, 4, 6, 28, 14),
 (5, '1605802130Herbert', 'Herbert', 2, 23, 23, 194, 1, 0, 0, 2, 5, 15, 12),
-(6, '1605802614Micha', 'Micha', 3, 39, 39, 163, 1, 0, 0, 5, 8, 12, 20);
+(6, '1605802614Micha', 'Micha', 3, 39, 39, 163, 1, 0, 0, 5, 8, 12, 20),
+(7, '1605859662Rudolf', 'Rudolf', 3, 37, 37, 152, 1, 0, 0, 6, 8, 30, 19);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

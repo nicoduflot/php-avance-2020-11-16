@@ -89,8 +89,8 @@ use Gam\Guerrier;
         </article>
     </section>
 </main>
-<footer>
-    &copy;Dawan
-</footer>
+<?php
+include "./src/includes/footer.php";
+?>
 </body>
 </html>

@@ -112,5 +112,8 @@ use Doctrine\Common\Collections\ArrayCollection;
             </article>
         </section>
     </main>
+    <?php
+    include "./src/includes/footer.php";
+    ?>
     </body>
 </html>

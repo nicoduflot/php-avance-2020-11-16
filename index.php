@@ -145,5 +145,8 @@ use App\Arme;
                 </article>
             </section>
         </main>
+        <?php
+        include "./src/includes/footer.php";
+        ?>
     </body>
 </html>

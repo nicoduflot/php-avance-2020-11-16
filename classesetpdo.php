@@ -50,13 +50,15 @@ use Gam\Guerrier;
                 die("Erreur connexion : " . $e->getMessage());
             }
 
-            $sql =  "SELECT".
-                " `p`.`id` as `idperso`, `p`.`nom` as `nomperso`, `cp`.`nom` as `nomclasse`, `p`.`uniqueid` ".
-                " FROM ".
-                "   `personnage` as `p` LEFT JOIN ".
-                "   `classe_personnage` as `cp` on ".
-                "   `p`.`id_classe` = `cp`.`id`";
+            $sql =  " SELECT ".
+                    "   `p`.`id` as `idperso`, `p`.`nom` as `nomperso`, `cp`.`nom` as `nomclasse`, ".
+                    "   `p`.`uniqueid`, `a`.`nom` as `nom_arme` ".
+                    " FROM ".
+                    "   `personnage` as `p` LEFT JOIN ".
+                    "   `classe_personnage` as `cp` ON `p`.`id_classe` = `cp`.`id` LEFT JOIN ".
+                    "   `arme` as `a` ON `p`.`id_arme` = `a`.`id`  ";
             $req = $bdd->prepare($sql);
+            //echo $sql;
             $req->execute() or die(print_r($bdd->errorInfo()));
             ?>
             <div style="max-height: 200px;overflow: auto">
@@ -65,6 +67,8 @@ use Gam\Guerrier;
                     <tr>
                         <th>Nom</th>
                         <th>Classe</th>
+                        <th>Arme</th>
+                        <th>Unique ID</th>
                         <th>action</th>
                     </tr>
                     </thead>
@@ -75,7 +79,9 @@ use Gam\Guerrier;
                         <tr id="<?php echo $donnees["idperso"]; ?>">
                             <td><?php echo $donnees["nomperso"]; ?></td>
                             <td><?php echo $donnees["nomclasse"]; ?></td>
-                            <td>Charger <?php echo $donnees["uniqueid"]; ?></td>
+                            <td><?php echo $donnees["nom_arme"]; ?></td>
+                            <td><?php echo $donnees["uniqueid"]; ?></td>
+                            <td>Charger</td>
                         </tr>
                         <?php
                     }

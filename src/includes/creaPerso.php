@@ -28,11 +28,12 @@ include "./functions.php";
         if(isset($_POST["creaPerso"]) && $_POST["creaPerso"] === "creaPerso"){
             $classePerso = $_POST["classe"];
             $nomPerso = ($_POST["nom"] !== "" ? $_POST["nom"] : "John Doe");
-            $nomArme = ($_POST["nomArme"] !== "" ? $_POST["nomArme"] : "Gertrude");
-            if($_POST["niveauArme"] === "0"){
-                $nomArme = "Mains Nues";
-            }
+            $nomArme = ($_POST["nomArme"] !== "" ? $_POST["nomArme"] : "Mains nues");
             $niveauArme = $_POST["niveauArme"];
+            if($_POST["niveauArme"] === "0" || $_POST["niveauArme"] === ""){
+                $nomArme = "Mains Nues";
+                $niveauArme = 0;
+            }
             $perso = createPerso($classePerso, $nomPerso, $nomArme, $niveauArme);
             ?>
             <div class="row">

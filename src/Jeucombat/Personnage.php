@@ -74,6 +74,7 @@ class Personnage
     }
 
     public function seRestaurer($niveauRestauration){
+        echo "<h3>".$this->name." Prend une potion de vigueur</h3>";
         if($niveauRestauration > 4){
             $niveauRestauration = 4;
         }

@@ -79,7 +79,14 @@ use Gam\Guerrier;
                         <tr id="<?php echo $donnees["idperso"]; ?>">
                             <td><?php echo $donnees["nomperso"]; ?></td>
                             <td><?php echo $donnees["nomclasse"]; ?></td>
-                            <td><?php echo $donnees["nom_arme"]; ?></td>
+                            <td><?php
+                                if($donnees["nom_arme"] === null){
+                                    $nomArme = "Mains nues";
+                                }else{
+                                    $nomArme = $donnees["nom_arme"];
+                                }
+                                echo $nomArme;
+                                ?></td>
                             <td><?php echo $donnees["uniqueid"]; ?></td>
                             <td>
                                 <a href="./src/includes/loadPerso.php?idPerso=<?php echo $donnees["idperso"]; ?>">

@@ -38,7 +38,7 @@ class Mage extends Personnage
     }
 
     public function seRestaurer($niveauRestauration){
-
+        echo "<h3>".$this->name." lance \"regain de vigueur\"</h3>";
         if($niveauRestauration > 4){
             $niveauRestauration = 4;
         }

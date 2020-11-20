@@ -4,6 +4,7 @@ use Gam\Personnage;
 use Gam\Arme;
 use Gam\Mage;
 use Gam\Guerrier;
+include "./functions.php";
 
 ?>
 <!DOCTYPE HTML>
@@ -32,21 +33,7 @@ use Gam\Guerrier;
                 $nomArme = "Mains Nues";
             }
             $niveauArme = $_POST["niveauArme"];
-            switch ($classePerso){
-                case "Personnage":
-                    $perso = new Personnage($nomPerso, new Arme($nomArme, $niveauArme));
-                    break;
-                case "Mage":
-                    $perso = new Mage($nomPerso, new Arme($nomArme, $niveauArme));
-                    break;
-                case "Guerrier":
-                    $perso = new Guerrier($nomPerso, new Arme($nomArme, $niveauArme));
-                    break;
-                default:
-                    $perso = new Personnage($nomPerso, new Arme($nomArme, $niveauArme));
-                    $classePerso = "Personnage";
-
-            }
+            $perso = createPerso($classePerso, $nomPerso, $nomArme, $niveauArme);
             ?>
             <div class="row">
                 <header class="col-lg-12">
@@ -62,7 +49,7 @@ use Gam\Guerrier;
                     $tabPerso["vigueur"] = $perso->getVigueur();
                     $tabPerso["max_degats"] = $perso->getMaxDegats();
                     $tabPerso["nomArme"] = $perso->getArme()->getNom();
-                    $tabPerso["niveauArme"] = $perso->getArme()->getNiveauDegats();
+                    $tabPerso["niveauArme"] = $niveauArme;
                     $tabPerso["bonus_degats"] = $perso->getBonusDegats();
                     $tabPerso["mana"] = $perso->getMana();
                     $tabPerso["furie"] = $perso->getFurie();

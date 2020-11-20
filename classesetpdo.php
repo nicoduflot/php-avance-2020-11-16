@@ -81,7 +81,13 @@ use Gam\Guerrier;
                             <td><?php echo $donnees["nomclasse"]; ?></td>
                             <td><?php echo $donnees["nom_arme"]; ?></td>
                             <td><?php echo $donnees["uniqueid"]; ?></td>
-                            <td>Charger</td>
+                            <td>
+                                <a href="./src/includes/loadPerso.php?idPerso=<?php echo $donnees["idperso"]; ?>">
+                                    <button class="btn btn-success">
+                                        Charger
+                                    </button>
+                                </a>
+                            </td>
                         </tr>
                         <?php
                     }

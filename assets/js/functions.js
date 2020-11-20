@@ -24,12 +24,4 @@ $(document).ready(function(){
         });
 
     });
-    // ajax pour l'enregistrement de personnages
-    // $.get
-    // les info du perso sont à mettre dans l'url
-    // arriver sur la page de traitement on enregistre
-    // dans la table personnage, et surtout su l'arme n'existe pas
-    // (comparaison du nom de l'arme) on l'ajoute à la table
-    // arme et c'est son id qu'on ajoute au perso
-    // si l'arme existe, in faut juste récupérer l'id de l'arme
 });

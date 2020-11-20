@@ -3,6 +3,10 @@ $persoJson = $_GET["json"];
 //echo "persoJson : ".$persoJson."<br />";
 $perso = json_decode($persoJson);
 
+echo "<pre>";
+var_dump($perso);
+echo "</pre>";
+
 $uniqueid = $perso->{"uniqueid"};
 $nom = $perso->{"nom"};
 $classe = $perso->{"classe"};
@@ -24,10 +28,10 @@ try {
     die("Erreur connexion : " . $e->getMessage());
 }
 
-$sqlArme = "SELECT * from `arme` WHERE `nom`= :nomArme;";
+$sqlArme = "SELECT * from `arme` WHERE `nom`= :nomArme AND `niveau_degats` = :niveau_degats;";
 
 $reqArme = $bdd->prepare($sqlArme);
-$reqArme->execute(array("nomArme" => $nomArme));
+$reqArme->execute(array("nomArme" => $nomArme, "niveau_degats" => $niveau_degats));
 
 if($reqArme->rowCount() > 0){
     $donnees = $reqArme->fetch();

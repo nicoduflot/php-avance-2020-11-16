@@ -23,6 +23,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="./classesetpdo.php">Classes Etendues & PDO</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./exception.php">Exceptions Php & PDO</a>
+            </li>
+
         </ul>
     </div>
 </nav>

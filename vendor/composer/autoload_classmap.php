@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Arme' => $baseDir . '/src/Classes/Arme.php',
+    'App\\MonException' => $baseDir . '/src/Classes/MonException.php',
     'App\\Personnage' => $baseDir . '/src/Classes/Personnage.php',
     'App\\Test' => $baseDir . '/src/Classes/Test.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
@@ -23,5 +24,7 @@ return array(
     'Doctrine\\Common\\Collections\\ExpressionBuilder' => $vendorDir . '/doctrine/collections/lib/Doctrine/Common/Collections/ExpressionBuilder.php',
     'Doctrine\\Common\\Collections\\Selectable' => $vendorDir . '/doctrine/collections/lib/Doctrine/Common/Collections/Selectable.php',
     'Gam\\Arme' => $baseDir . '/src/Jeucombat/Arme.php',
+    'Gam\\Guerrier' => $baseDir . '/src/Jeucombat/Guerrier.php',
+    'Gam\\Mage' => $baseDir . '/src/Jeucombat/Mage.php',
     'Gam\\Personnage' => $baseDir . '/src/Jeucombat/Personnage.php',
 );

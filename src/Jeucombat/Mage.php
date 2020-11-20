@@ -37,6 +37,27 @@ class Mage extends Personnage
         }
     }
 
+    public function seRestaurer($niveauRestauration){
 
+        if($niveauRestauration > 4){
+            $niveauRestauration = 4;
+        }
+
+        $tabMinMax = explode(";", $this->tabRestauration[$niveauRestauration]);
+        $restauration = random_int(intval($tabMinMax[0]), intval($tabMinMax[1]));
+        if($this->mana - 5 < 0){
+            echo "<h3 style='background-color: #ff0000;color: #fff;font-weight: bold;padding:2px;'>".
+                $this->getName()." n'a pas assez de mana pour lancer Le sort \"regain de vigueur\"</h3>";
+        }else {
+            echo "Le sort \"regain de vigueur\" redonne " . $restauration . " points de vigueur<br />";
+            if (($restauration + $this->vigueur) > $this->force) {
+                $restauration = $this->force;
+            } else {
+                $restauration = $restauration + $this->vigueur;
+            }
+            echo "pour un maximum de " . $restauration . " points de vigueur<br />";
+            $this->setVigueur($restauration);
+        }
+    }
 
 }

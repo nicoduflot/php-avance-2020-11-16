@@ -77,16 +77,26 @@ use Gam\Guerrier;
                     if(random_int(1, 3)== 3){
                         $perso2->attaqueBrutale($perso1);
                     }else{
-                        $perso2->frapper($perso1);
+                        if(random_int(1, 3)== 3){
+                            $perso2->seRestaurer(1);
+                        }else{
+                            $perso2->frapper($perso1);
+                        }
                     }
+
                     if(!$perso2->checkVitality($perso1)){
                         exit();
                     }
                     if(random_int(1, 3)== 3){
                         $perso1->bouleDeFeu($perso2);
                     }else{
-                        $perso1->frapper($perso2);
+                        if(random_int(1, 3)== 3){
+                            $perso1->seRestaurer(1);
+                        }else{
+                            $perso1->frapper($perso2);
+                        }
                     }
+
                     if(!$perso1->checkVitality($perso2)){
                         exit();
                     }

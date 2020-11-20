@@ -38,6 +38,7 @@ class ComposerStaticInitcb6ed95a0e802bfea3c09b13b4eef19a
 
     public static $classMap = array (
         'App\\Arme' => __DIR__ . '/../..' . '/src/Classes/Arme.php',
+        'App\\MonException' => __DIR__ . '/../..' . '/src/Classes/MonException.php',
         'App\\Personnage' => __DIR__ . '/../..' . '/src/Classes/Personnage.php',
         'App\\Test' => __DIR__ . '/../..' . '/src/Classes/Test.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -54,6 +55,8 @@ class ComposerStaticInitcb6ed95a0e802bfea3c09b13b4eef19a
         'Doctrine\\Common\\Collections\\ExpressionBuilder' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/ExpressionBuilder.php',
         'Doctrine\\Common\\Collections\\Selectable' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Selectable.php',
         'Gam\\Arme' => __DIR__ . '/../..' . '/src/Jeucombat/Arme.php',
+        'Gam\\Guerrier' => __DIR__ . '/../..' . '/src/Jeucombat/Guerrier.php',
+        'Gam\\Mage' => __DIR__ . '/../..' . '/src/Jeucombat/Mage.php',
         'Gam\\Personnage' => __DIR__ . '/../..' . '/src/Jeucombat/Personnage.php',
     );
 

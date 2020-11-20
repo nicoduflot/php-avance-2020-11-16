@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '7d78cf7e5a16d59aebb9d851012583f9a50a4e7e',
+    'reference' => 'f16f923557b05e3835988441cfb9937efad91861',
     'name' => 'nduflot/php-avance-2020-11-16',
   ),
   'versions' => 
@@ -27,7 +27,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '7d78cf7e5a16d59aebb9d851012583f9a50a4e7e',
+      'reference' => 'f16f923557b05e3835988441cfb9937efad91861',
     ),
     'twbs/bootstrap' => 
     array (

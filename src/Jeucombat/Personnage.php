@@ -10,7 +10,7 @@ class Personnage
     protected $name;
     private $uniqId;
     protected $force;
-    private $vigueur;
+    protected $vigueur;
     private $maxDegats;
     private $localisation;
     protected $experience;
@@ -19,7 +19,7 @@ class Personnage
     protected $bonusDegats;
     protected $mana;
     protected $furie;
-    private $tabRestauration =["1;10", "11;30", "31;50", "51;70", "71;100"];
+    protected $tabRestauration =["1;10", "11;30", "31;50", "51;70", "71;100"];
 
     //constructeur
     /**
@@ -71,6 +71,22 @@ class Personnage
 
     public function seDeplacer($nouvelleSalle){
         $this->localisation = $nouvelleSalle;
+    }
+
+    public function seRestaurer($niveauRestauration){
+        if($niveauRestauration > 4){
+            $niveauRestauration = 4;
+        }
+        $tabMinMax = explode(";", $this->tabRestauration[$niveauRestauration]);
+        $restauration = random_int(intval($tabMinMax[0]), intval($tabMinMax[1]));
+        echo "La potion restaure ".$restauration." points de vigueur<br />";
+        if(($restauration+$this->vigueur) > $this->force){
+            $restauration = $this->force;
+        }else{
+            $restauration = $restauration+$this->vigueur;
+        }
+        echo "pour un maximum de ".$restauration." points de vigueur<br />";
+        $this->setVigueur($restauration);
     }
 
     //gettesr & setters

@@ -1,49 +1,56 @@
-<?php return array (
-  'root' => 
-  array (
-    'pretty_version' => 'dev-main',
-    'version' => 'dev-main',
-    'aliases' => 
-    array (
+<?php return array(
+    'root' => array(
+        'name' => 'nduflot/php-avance-2020-11-16',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '155a0dfd5eb4bfcc6853a15253981b29958e0905',
+        'type' => 'project',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
     ),
-    'reference' => 'f16f923557b05e3835988441cfb9937efad91861',
-    'name' => 'nduflot/php-avance-2020-11-16',
-  ),
-  'versions' => 
-  array (
-    'doctrine/collections' => 
-    array (
-      'pretty_version' => '1.6.7',
-      'version' => '1.6.7.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '55f8b799269a1a472457bd1a41b4f379d4cfba4a',
+    'versions' => array(
+        'doctrine/collections' => array(
+            'pretty_version' => '2.2.1',
+            'version' => '2.2.1.0',
+            'reference' => '420480fc085bc65f3c956af13abe8e7546f94813',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../doctrine/collections',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'doctrine/deprecations' => array(
+            'pretty_version' => '1.1.3',
+            'version' => '1.1.3.0',
+            'reference' => 'dfbaa3c2d2e9a9df1118213f3b8b0c597bb99fab',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../doctrine/deprecations',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'nduflot/php-avance-2020-11-16' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '155a0dfd5eb4bfcc6853a15253981b29958e0905',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'twbs/bootstrap' => array(
+            'pretty_version' => 'v4.5.3',
+            'version' => '4.5.3.0',
+            'reference' => 'a716fb03f965dc0846df479e14388b1b4b93d7ce',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../twbs/bootstrap',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'twitter/bootstrap' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v4.5.3',
+            ),
+        ),
     ),
-    'nduflot/php-avance-2020-11-16' => 
-    array (
-      'pretty_version' => 'dev-main',
-      'version' => 'dev-main',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'f16f923557b05e3835988441cfb9937efad91861',
-    ),
-    'twbs/bootstrap' => 
-    array (
-      'pretty_version' => 'v4.5.3',
-      'version' => '4.5.3.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'a716fb03f965dc0846df479e14388b1b4b93d7ce',
-    ),
-    'twitter/bootstrap' => 
-    array (
-      'replaced' => 
-      array (
-        0 => 'v4.5.3',
-      ),
-    ),
-  ),
 );

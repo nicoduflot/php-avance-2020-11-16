@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Doctrine\Common\Collections\Expr;
 
 /**
@@ -7,8 +9,6 @@ namespace Doctrine\Common\Collections\Expr;
  */
 interface Expression
 {
-    /**
-     * @return mixed
-     */
+    /** @return mixed */
     public function visit(ExpressionVisitor $visitor);
 }

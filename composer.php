@@ -95,7 +95,7 @@ use App\Test;
             </p>
             <code>
                 "require": {<br/>
-                &nbsp;&nbsp;"doctrine/collections": "^1.6"<br/>
+                &nbsp;&nbsp;"doctrine/collections": "^2.2"<br/>
                 }
             </code>
             <p>
@@ -115,7 +115,7 @@ use App\Test;
             </p>
             <code>
                 "require": {<br/>
-                &nbsp;&nbsp;"doctrine/collections": "^1.6"<br/>
+                &nbsp;&nbsp;"doctrine/collections": "^2.2"<br/>
                 }
             </code>
             <p>

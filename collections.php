@@ -1,5 +1,6 @@
 <?php
 require "vendor/autoload.php";
+
 use Doctrine\Common\Collections\ArrayCollection;
 ?>
 <!DOCTYPE HTML>
@@ -38,6 +39,8 @@ use Doctrine\Common\Collections\ArrayCollection;
                 // mais onpréfèrera utiliser use
                 $collection = new ArrayCollection();
                 $collection->add("Nicolas Duflot");
+
+                $test = new ArrayCollection();
                 ?>
                 <pre>
                     <?php
@@ -55,7 +58,7 @@ use Doctrine\Common\Collections\ArrayCollection;
                     ?>
                 </pre>
                 <?php
-                echo $collection->count()."<br />";
+                /*echo $collection->count()."<br />";*/
                 echo $collection->key()."<br />";
                 $collection->clear();
                 ?>

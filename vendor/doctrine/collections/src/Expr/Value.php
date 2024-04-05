@@ -1,23 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Doctrine\Common\Collections\Expr;
 
 class Value implements Expression
 {
-    /** @var mixed */
-    private $value;
-
-    /**
-     * @param mixed $value
-     */
-    public function __construct($value)
+    public function __construct(private readonly mixed $value)
     {
-        $this->value = $value;
     }
 
-    /**
-     * @return mixed
-     */
+    /** @return mixed */
     public function getValue()
     {
         return $this->value;
